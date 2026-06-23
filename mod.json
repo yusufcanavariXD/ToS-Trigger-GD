@@ -1,17 +1,15 @@
 {
-	"geode": "$GEODE_VERSION",
-	"gd": {
-		"win": "2.2081",
-		"android": "2.2081",
-		"mac": "2.2081",
-		"ios": "2.2081"
-	},
-	"id": "$MOD_ID",
-	"name": "$MOD_NAME",
-	"version": "$MOD_VERSION",
-	"developer": "$MOD_DEVELOPER",
-	"description": "$MOD_DESCRIPTION",
-	"dependencies": {
-		"geode.node-ids": ">=v1.23.3"
-	}
+  "geode": "3.0.0-beta.1",
+  "id": "yusoft.tostrigger",
+  "version": "1.0.0",
+  "name": "Terms of Service Trigger",
+  "developer": "YuSoft",
+  "description": "Adds a mandatory Terms of Service trigger to the editor. Players must accept the terms to continue!",
+  "dependencies": [
+    {
+      "id": "geode.loader",
+      "version": ">=1.0.0-beta.1",
+      "importance": "required"
+    }
+  ]
 }
