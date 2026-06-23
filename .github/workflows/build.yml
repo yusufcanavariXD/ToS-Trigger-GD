@@ -24,3 +24,5 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: v3.0.0-beta.1
+        env:
+          GEODE_SDK: ${{ github.workspace }}/geode-sdk
