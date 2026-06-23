@@ -34,5 +34,5 @@ jobs:
 
       - name: Configure and Build
         run: |
-          cmake -B build -A win32 -DCMAKE_BUILD_TYPE=Release -DGEODE_DONT_INCLUDE_DEFAULT_MOD_JSON=ON
+          cmake -B build -G "Visual Studio 17 2022" -A win32 -DCMAKE_BUILD_TYPE=Release -DGEODE_DONT_INCLUDE_DEFAULT_MOD_JSON=ON
           cmake --build build --config Release
