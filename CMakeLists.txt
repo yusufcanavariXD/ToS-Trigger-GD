@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.13)
 
-# Eski CPM çakışmalarını tamamen önlemek için bypass politikası
-if(POLICY CMP0048)
-  cmake_policy(SET CMP0048 NEW)
-endif()
-
 project(ToSTrigger)
+
+# Bulut derleyicisinin Geode yollarını otomatik tanıması için eklenen köprü
+if(DEFINED ENV{GEODE_SDK})
+    list(APPEND CMAKE_PREFIX_PATH "$ENV{GEODE_SDK}")
+endif()
 
 find_package(Geode REQUIRED)
 
