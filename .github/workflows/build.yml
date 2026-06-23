@@ -33,6 +33,8 @@ jobs:
           echo "GEODE_SDK=C:/Users/runneradmin/AppData/Local/Geode/sdk/v3.0.0-beta.1" >> $GITHUB_ENV
 
       - name: Configure and Build
+        shell: cmd
         run: |
-          cmake -B build -G "Visual Studio 17 2022" -A win32 -DCMAKE_BUILD_TYPE=Release -DGEODE_DONT_INCLUDE_DEFAULT_MOD_JSON=ON
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
+          cmake -B build -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DGEODE_DONT_INCLUDE_DEFAULT_MOD_JSON=ON
           cmake --build build --config Release
