@@ -22,11 +22,9 @@ jobs:
 
       - name: Install Geode CLI
         run: |
-          gh release download v3.7.4 -R geode-sdk/cli -p "*win.zip"
-          tar -xf geode-cli-*.zip
+          curl -LO https://github.com/geode-sdk/cli/releases/download/v3.7.4/geode-cli-v3.7.4-win.zip
+          tar -xf geode-cli-v3.7.4-win.zip
           echo "${{ github.workspace }}" >> $GITHUB_PATH
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Geode SDK
         run: |
