@@ -28,7 +28,7 @@ jobs:
 
       - name: Setup Geode SDK
         run: |
-          ./geode.exe profile add --name BulutProfil --gamedir "${{ github.workspace }}"
+          ./geode.exe profile add --name BulutProfil "${{ github.workspace }}"
           ./geode.exe sdk install v3.0.0-beta.1
           echo "GEODE_SDK=C:/Users/runneradmin/AppData/Local/Geode/sdk/v3.0.0-beta.1" >> $GITHUB_ENV
 
