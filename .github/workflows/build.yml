@@ -25,6 +25,8 @@ jobs:
           gh release download v3.7.4 -R geode-sdk/cli -p "*win.zip"
           tar -xf geode-cli-*.zip
           echo "${{ github.workspace }}" >> $GITHUB_PATH
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Geode SDK
         run: |
