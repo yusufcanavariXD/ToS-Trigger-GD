@@ -27,26 +27,22 @@ public:
     void onBtn1(CCObject* sender) override {
         FLAlertLayer::onBtn1(sender);
         g_tosActive = false;
-        if (auto playLayer = PlayLayer::get()) {
-            playLayer->startMusic();
-        }
     }
 };
 
 class $modify(MyPlayLayer, PlayLayer) {
     void update(float dt) {
         if (g_tosActive) {
-            if (this->m_player1) {
-                this->m_player1->m_positionX = this->m_player1->m_positionX;
-            }
             return;
         }
 
         PlayLayer::update(dt);
 
-        if (this->m_time > 2.0f && !g_tosActive && !this->m_isDead) {
+        static float accumulatedTime = 0.0f;
+        accumulatedTime += dt;
+
+        if (accumulatedTime > 2.0f && !g_tosActive && !this->m_isDead) {
             g_tosActive = true;
-            this->m_player1->m_platformerXVelocity = 0;
             ToSPopup::create()->show();
         }
     }
