@@ -1,5 +1,6 @@
 {
   "geode": "3.0.0-beta.1",
+  "gd": "2.206",
   "id": "yusoft.tostrigger",
   "version": "1.0.0",
   "name": "Terms of Service Trigger",
