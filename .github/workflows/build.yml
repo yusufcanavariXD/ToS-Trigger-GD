@@ -20,9 +20,18 @@ jobs:
         with:
           cmake-version: '3.25.0'
 
-      - name: Build Mod with Geode SDK
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          sdk: v3.0.0-beta.1
-        env:
-          GEODE_SDK: ${{ github.workspace }}/geode-sdk
+      - name: Install Geode CLI
+        run: |
+          gh release download v3.7.4 -R geode-sdk/cli -p "*win.zip"
+          tar -xf geode-cli-*.zip
+          echo "${{ github.workspace }}" >> $GITHUB_PATH
+
+      - name: Setup Geode SDK
+        run: |
+          ./geode.exe sdk install v3.0.0-beta.1
+          echo "GEODE_SDK=$(./geode.exe sdk path)" >> $GITHUB_ENV
+
+      - name: Configure and Build
+        run: |
+          cmake -B build -A win32 -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
