@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(ToSTrigger)
-
+list(APPEND CMAKE_PREFIX_PATH "$ENV{GEODE_SDK}")
 # Bulut derleyicisinin Geode yollarını otomatik tanıması için eklenen köprü
 if(DEFINED ENV{GEODE_SDK})
     list(APPEND CMAKE_PREFIX_PATH "$ENV{GEODE_SDK}")
