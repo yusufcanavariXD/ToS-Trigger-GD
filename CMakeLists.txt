@@ -1,28 +1,20 @@
 cmake_minimum_required(VERSION 3.13)
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
-    set(CMAKE_OSX_ARCHITECTURES "arm64")
-else()
-    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
-endif()
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-project(Template VERSION 1.0.0)
-
-# Add all source files inside src (recursively)
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
-
-# Set up the mod binary
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
-
-if (NOT DEFINED ENV{GEODE_SDK})
-    message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
-else()
-    message(STATUS "Found Geode: $ENV{GEODE_SDK}")
+# Eski CPM çakışmalarını tamamen önlemek için bypass politikası
+if(POLICY CMP0048)
+  cmake_policy(SET CMP0048 NEW)
 endif()
 
-add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+project(ToSTrigger)
 
-# Set up dependencies, resources, and link Geode.
-setup_geode_mod(${PROJECT_NAME})
+find_package(Geode REQUIRED)
+
+add_geode_mod(
+    ID yusoft.tostrigger
+    VERSION 1.0.0
+    NAME "Terms of Service Trigger"
+    DEVELOPER "YuSoft"
+    DESCRIPTION "Adds a mandatory Terms of Service trigger."
+)
+
+add_subdirectory(src)
